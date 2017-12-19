@@ -1,0 +1,11 @@
+PKG core
+PKG core_extended
+PKG cryptokit
+PKG ppx_deriving_yojson
+PKG ppx_deriving
+PKG ppx_deriving.std
+PKG yojson
+
+S src
+
+B _build/src
