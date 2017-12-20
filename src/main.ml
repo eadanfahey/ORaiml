@@ -1,9 +1,9 @@
-open Core.Std
+open Core
 open Result
 
 let () =
   let open Block in
-  let block1 = Block.mine "Infinite Jest" None in
+  let block1 = mine "Infinite Jest" None in
   let block2 = mine "Gravity's Rainbow" (Some (hash block1)) in
   let blockchain = Blockchain.(
       add_block empty block1 >>= fun bc ->
