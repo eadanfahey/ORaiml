@@ -17,12 +17,6 @@ let mine ~data ~prevhash =
   {timestamp; data; prevhash; nonce}
 
 
-let serialize t = to_yojson t |> Yojson.Safe.to_string
-
-
-let deserialize s = Yojson.Safe.from_string s |> of_yojson
-
-
 let sha256 s =
   let hasher = Cryptokit.Hash.sha256 () in
   let encode_hex = Cryptokit.Hexa.encode () in
@@ -30,4 +24,7 @@ let sha256 s =
   Cryptokit.transform_string encode_hex hash
 
 
-let hash t = serialize t |> sha256
+let hash t =
+  to_yojson t
+  |> Yojson.Safe.to_string
+  |> sha256
