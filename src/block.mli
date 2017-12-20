@@ -1,5 +1,5 @@
 type t = {
-  timestamp: int;
+  timestamp: float;
   data: string;
   prevhash: string option;
   nonce: int;
