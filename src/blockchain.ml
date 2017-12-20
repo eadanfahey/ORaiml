@@ -34,8 +34,4 @@ let add_block t block =
 let to_list t = t
 
 
-let get_block t ~hash =
-  try
-    Some (List.find (fun b -> Block.hash b = hash) t)
-  with
-    Not_found -> None
+let get_block t ~hash = List.find t (fun b -> Block.hash b = hash)
