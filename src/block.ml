@@ -24,7 +24,4 @@ let sha256 s =
   Cryptokit.transform_string encode_hex hash
 
 
-let hash t =
-  to_yojson t
-  |> Yojson.Safe.to_string
-  |> sha256
+let hash t = to_yojson t |> Yojson.Safe.to_string |> sha256
