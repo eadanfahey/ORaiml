@@ -1,15 +1,18 @@
 open Core
 
 type t = {
-  timestamp: int;
+  timestamp: float;
   data: string;
   prevhash: string option;
   nonce: int;
 } [@@deriving yojson]
 
 
+let to_epoch time = Time.(diff time epoch |> Span.to_sec)
+
+
 let mine ~data ~prevhash =
-  let timestamp = Time.now () |> Time.to_epoch |> int_of_float in
+  let timestamp = Time.now () |> to_epoch in
   let nonce = 0 in
   {timestamp; data; prevhash; nonce}
 
