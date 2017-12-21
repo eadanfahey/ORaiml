@@ -5,6 +5,7 @@ PKG ppx_deriving_yojson
 PKG ppx_deriving
 PKG ppx_deriving.std
 PKG yojson
+PKG bignum
 
 S src
 

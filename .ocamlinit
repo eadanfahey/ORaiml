@@ -6,6 +6,7 @@
 #require "ppx_deriving_yojson";;
 #require "yojson";;
 #require "cryptokit";;
+#require "bignum";;
 #directory "_build/src/";;
 
 let () =
