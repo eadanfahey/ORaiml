@@ -1,6 +1,6 @@
-# ORaiML (Part 1)
+# ORaiML (Part 2)
 
-Code for part 1 in the series of articles titled "Let's build a cryptocurrency".
+Code for part 2 in the series of articles titled "Let's build a cryptocurrency".
 
 ## Instructions
 
