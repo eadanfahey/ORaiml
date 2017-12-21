@@ -22,16 +22,11 @@ let sha256 s =
 let hash t = to_yojson t |> Yojson.Safe.to_string |> sha256
 
 
-let difficulty = 12
-
-
 let mine ~data ~prevhash =
   let timestamp = Time.now () |> to_epoch in
-  let target_pow = 256 - difficulty in
-  let target = Bigint.(pow (of_int 2) (of_int target_pow)) in
   let rec mine_loop block =
     let hash_int = Bigint.Hex.of_string ("0x" ^ (hash block)) in
-    match Bigint.(hash_int < target) with
+    match Bigint.(hash_int < Constants.pow_target) with
     | true  -> block
     | false -> mine_loop {block with nonce = block.nonce + 1}
   in
