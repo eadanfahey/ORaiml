@@ -1,4 +1,5 @@
 open Core
+open Bignum
 
 type t = {
   timestamp: float;
@@ -11,12 +12,6 @@ type t = {
 let to_epoch time = Time.(diff time epoch |> Span.to_sec)
 
 
-let mine ~data ~prevhash =
-  let timestamp = Time.now () |> to_epoch in
-  let nonce = 0 in
-  {timestamp; data; prevhash; nonce}
-
-
 let sha256 s =
   let hasher = Cryptokit.Hash.sha256 () in
   let encode_hex = Cryptokit.Hexa.encode () in
@@ -25,3 +20,19 @@ let sha256 s =
 
 
 let hash t = to_yojson t |> Yojson.Safe.to_string |> sha256
+
+
+let difficulty = 12
+
+
+let mine ~data ~prevhash =
+  let timestamp = Time.now () |> to_epoch in
+  let target_pow = 256 - difficulty in
+  let target = Bigint.(pow (of_int 2) (of_int target_pow)) in
+  let rec mine_loop block =
+    let hash_int = Bigint.Hex.of_string ("0x" ^ (hash block)) in
+    match Bigint.(hash_int < target) with
+    | true  -> block
+    | false -> mine_loop {block with nonce = block.nonce + 1}
+  in
+  mine_loop {timestamp; data; prevhash; nonce = 0}
