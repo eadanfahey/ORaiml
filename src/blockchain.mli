@@ -16,3 +16,9 @@ val get_block: t -> hash:string -> Block.t option
 val of_yojson : Yojson.Safe.json -> (t, string) Result.result
 
 val to_yojson : t -> Yojson.Safe.json
+
+(* Open a blockchain from file*)
+val from_file: string -> t
+
+(* Save a blockchain to file *)
+val to_file: t -> string -> unit

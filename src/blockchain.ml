@@ -39,3 +39,15 @@ let to_list t = t
 
 
 let get_block t ~hash = List.find t (fun b -> Block.hash b = hash)
+
+
+let to_file t filename =
+  let data = to_yojson t |> Yojson.Safe.to_string in
+  Out_channel.write_all filename ~data:data
+
+
+let from_file filename =
+  let data = In_channel.read_all filename in
+  match Yojson.Safe.from_string data |> of_yojson with
+  | Ok bc -> bc
+  | Error e -> failwith e
