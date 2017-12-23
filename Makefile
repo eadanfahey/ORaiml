@@ -17,9 +17,11 @@ native:
 	$(OCB) block.native
 	$(OCB) blockchain.native
 	$(OCB) main.native
+	$(OCB) cli.native
 
 byte:
 	$(OCB) constants.byte
 	$(OCB) block.byte
 	$(OCB) blockchain.byte
 	$(OCB) main.byte
+	$(OCB) cli.byte
