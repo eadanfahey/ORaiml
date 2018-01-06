@@ -13,11 +13,19 @@ clean:
 	$(OCB) -clean
 
 native:
+	$(OCB) constants.native
 	$(OCB) block.native
 	$(OCB) blockchain.native
-	$(OCB) main.native
+	$(OCB) transaction.native
+	$(OCB) client.native
+	$(OCB) utxo.native
+	$(OCB) cli.native
 
 byte:
+	$(OCB) constants.byte
 	$(OCB) block.byte
 	$(OCB) blockchain.byte
-	$(OCB) main.byte
+	$(OCB) transaction.byte
+	$(OCB) client.byte
+	$(OCB) utxo.byte
+	$(OCB) cli.byte

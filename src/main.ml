@@ -14,3 +14,5 @@ let () =
   | Ok bc   -> Blockchain.to_yojson bc
                |> Yojson.Safe.pretty_to_string
                |> print_string;
+
+  printf "\n\nHash of block1: %s" (hash block1);
