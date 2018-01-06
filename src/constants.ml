@@ -8,3 +8,5 @@ let pow_target =
   Bigint.pow two i
 
 let blockchain_file = "blockchain.json"
+
+let reward = 50.0

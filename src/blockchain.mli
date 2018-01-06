@@ -7,8 +7,11 @@ val empty: t
 (* Add a block to a blockchain *)
 val add_block: t -> Block.t -> (t, string) Result.result
 
-(* Convert a blockchain to a list of Blocks *)
-val to_list: t -> Block.t list
+(* The blocks in the blockchain *)
+val blocks: t -> Block.t list
+
+(* The UTXO set of the blockchain *)
+val utxo: t -> Utxo.t
 
 (* Get a block from a blockchain with a given hash *)
 val get_block: t -> hash:string -> Block.t option
